@@ -1,30 +1,30 @@
-code 
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.26;
+pragma solidity 0.8.24;
 
-contract vehicleLicenseEligibility {
+import "hardhat/console.sol";
 
-    // this function will check  if eligible for learning license or not 
-    function checkLearningLicense(uint age) public pure {
-        require(age >= 16, "age should be atleast 16 for a learning license");
-        require(age < 18, "age must be less than 19 for a learning license");
-        assert(age >= 16 && age < 18);
+contract ErrorHandling {
+    uint public age;
+
+    function setAge(uint _age) public{
+        age = _age;
+    }
+    function Assert() public view{
+        assert(age >= 18 && age <= 80);
+        console.log("Congratulations! You are eligible to Learner License.");
     }
 
-    // this will check if eligible for permanent license or not 
-    function checkPermanentLicense(uint age) public pure {
-        require(age >= 18, "Age must be at least 19 for a permanent license");
-        assert(age >= 18);   
+    function Require() public view{
+        require(age >= 18, "You must be at least 18 years old to be eligible." );
+        console.log("Congratulations! You are eligible for LR .");
     }
 
-    // Function to check license eligibility and revert if not eligible
-    function checkLicense(uint age) public pure returns (string memory) {
-        if (age >= 18) {
-            return "Eligible for permanent license";
-        } else if (age >= 16) {
-            return "Eligible for learning license";
-        } else {
-            revert("Not eligible for any license");
+    function Revert() public view{
+        if (age < 18 || age > 80){
+            revert("You must be between 18 and 80 years old to be eligible to Driving License");
+        }
+        else{
+            console.log("Congratulations! You qualified for License.");
         }
     }
 }
