@@ -35,7 +35,7 @@ The `vehicleLicenseEligibility` smart contract provides functions to check eligi
 
 1. **Compile the Contract**
    - Click on the "Solidity Compiler" tab.
-   - Ensure the compiler version is set to `0.8.26` or later.
+   - Ensure the compiler version is set to `0.8.24` or later.
    - Click the "Compile vehicleLicenseEligibility.sol" button.
 
 ### Deployment
